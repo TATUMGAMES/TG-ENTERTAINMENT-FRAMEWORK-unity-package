@@ -82,9 +82,9 @@ namespace EntertainmentFramework.DemoProject
         private void OnAuthSuccess(Dictionary<string, object> mikrosUserData = null)
         {
             PopupHandler.Instance.HideLoader();
+#if MIKROS_ADDED
             if (mikrosUserData != null)
             {
-#if MIKROS_ADDED
                 string email = mikrosUserData["Email"].ToString();
                 PopupHandler.Instance.ShowPopup(mikrosUserData == null ? "Signed out" : ("Auth Success: " + email));
                 currentPanel.SetActive(false);

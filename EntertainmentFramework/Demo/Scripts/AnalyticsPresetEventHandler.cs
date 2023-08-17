@@ -303,7 +303,9 @@ namespace EntertainmentFramework.DemoProject
         /// </summary>
         public void LogCustomEvent()
         {
+#if MIKROS_ADDED
             PresetEventHandler.Instance.TrackCustom(eventNameInputField.text, OnSuccessCallBack, OnFailureCallback);
+#endif
         }
 
         /// <summary>
@@ -326,7 +328,9 @@ namespace EntertainmentFramework.DemoProject
         /// </summary>
         public void FlushEvents()
         {
+#if MIKROS_ADDED
             PresetEventHandler.Instance.FlushEvents();
+#endif
         }
 
         private void OnSuccessCallBack()
