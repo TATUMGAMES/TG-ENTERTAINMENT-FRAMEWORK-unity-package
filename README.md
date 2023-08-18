@@ -43,7 +43,7 @@ computer.
 In later versions of Unity, you can import directly via the Package Manager
 interface.
 
-![UPM, add from Git URL dropdown](TG-ENTERTAINMENT-FRAMEWORK-unity/Packages/EntertainmentFramework/Documentation/upm-via-git.png)
+![UPM, add from Git URL dropdown](EntertainmentFramework/Documentation/upm-via-git.png)
 Supply the following URL:
 
 ```
@@ -58,9 +58,9 @@ Steps to do so are as follow:
 https://github.com/TATUMGAMES/TG-ENTERTAINMENT-FRAMEWORK-unity-package.git
 ```
 2. In your proejct goto PackageManager and select `Add Package from Disk` option
-   ![UPM, add from Disk dropdown](TG-ENTERTAINMENT-FRAMEWORK-unity/Packages/EntertainmentFramework/Documentation/upm-via-disk.png)
+   ![UPM, add from Disk dropdown](EntertainmentFramework/Documentation/upm-via-disk.png)
 3. Then locate the package.json file of the Clone Repositry in your local system
-    ![Provide the package location from local system.](TG-ENTERTAINMENT-FRAMEWORK-unity/Packages/EntertainmentFramework/Documentation/upm_via_disk_2.png)
+    ![Provide the package location from local system.](EntertainmentFramework/Documentation/upm_via_disk_2.png)
 4. Boom you done.
 
 ### Installation directly from Unitypackage.
