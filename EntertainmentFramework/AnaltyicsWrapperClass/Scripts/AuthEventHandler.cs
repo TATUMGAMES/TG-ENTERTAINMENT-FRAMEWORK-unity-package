@@ -46,7 +46,7 @@ namespace EntertainmentFramework.AuthEvents
         /// <param name="callback">Signin success callback.</param>
         /// <see href="https://docs.unity3d.com/ScriptReference/Events.UnityAction.html">Unity Action Documentation</see>
         public void MikrosSignin(string username, string email,
-            string password, UnityAction<Dictionary<string, object>> callback = null, UnityAction onFailure = null)
+            string password, UnityAction<Dictionary<string, object>> callback = null, UnityAction<string> onFailure = null)
         {
             SigninRequest.Builder()
                 .Username(username)
@@ -61,9 +61,10 @@ namespace EntertainmentFramework.AuthEvents
                         InternalLogger.Log("Success");
                         Dictionary<string, object> successDictionary = successResponse.MapToDictionary();
                         callback?.Invoke(successDictionary);
-                    });
+                    },
+                    failure => onFailure?.Invoke(failure.Message));
                 },
-                failure => onFailure?.Invoke());
+                failure => onFailure?.Invoke(failure.Message));
         }
 
         /// <summary>
@@ -74,7 +75,7 @@ namespace EntertainmentFramework.AuthEvents
         /// <param name="password">Password.</param>
         /// <param name="callback">Signup success callback.</param>
         /// <see href="https://docs.unity3d.com/ScriptReference/Events.UnityAction.html">Unity Action Documentation</see>
-        public void MikrosSignup(string username, string email, string password, UnityAction<Dictionary<string, object>> callback = null, bool enableSpecialCharacterUsername = true, UnityAction onFailure = null)
+        public void MikrosSignup(string username, string email, string password, UnityAction<Dictionary<string, object>> callback = null, bool enableSpecialCharacterUsername = true, UnityAction<string> onFailure = null)
         {
             SignupRequest.Builder()
                 .Username(username)
@@ -88,23 +89,24 @@ namespace EntertainmentFramework.AuthEvents
                         InternalLogger.Log("Success");
                         Dictionary<string, object> successDictionary = successResponse.MapToDictionary();
                         callback?.Invoke(successDictionary);
-                    });
+                    },
+                    failure => onFailure?.Invoke(failure.Message));
                 },
-                failure => onFailure?.Invoke());
+                failure => onFailure?.Invoke(failure.Message));
         }
 
         /// <summary>
         /// Perform Mikros Signout.
         /// </summary>
         /// <param name="callback">Signout success callback.</param>
-        public void MikrosSignout(UnityAction<Dictionary<string, object>> callback = null, UnityAction onFailure = null)
+        public void MikrosSignout(UnityAction<Dictionary<string, object>> callback = null, UnityAction<string> onFailure = null)
         {
             MikrosManager.Instance.AuthenticationController.Signout(() =>
             {
                 InternalLogger.Log("Success");
                 callback?.Invoke(null);
             },
-            failure => onFailure?.Invoke());
+            failure => onFailure?.Invoke(failure.Message));
         }
 
         /// <summary>

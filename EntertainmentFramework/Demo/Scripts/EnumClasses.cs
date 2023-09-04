@@ -164,7 +164,9 @@ public class ParticipantData
 {
     public string userName;
     public string email;
+#if MIKROS_ADDED
     public PlayerBehavior participantBehavior;
+#endif
 }
 
 public class ParticipantDatas
