@@ -266,6 +266,17 @@ namespace EntertainmentFramework.DemoProject
         }
 
         /// <summary>
+        /// Tracks Forgot Password Request Preset Event.
+        /// </summary>
+        public void TrackForgotPassword()
+        {
+#if MIKROS_ADDED
+            PopupHandler.Instance.ShowLoader();
+            PresetEventHandler.Instance.TrackForgotPassword(MethodType.GOOGLE,OnSuccessCallBack, OnFailureCallback);
+#endif
+        }
+
+        /// <summary>
         /// Tracks handled exceptions.
         /// </summary>
         public void TrackException(System.Exception exception)

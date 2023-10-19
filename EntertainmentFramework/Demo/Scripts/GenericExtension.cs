@@ -10,11 +10,7 @@ namespace EntertainmentFramework
         public static Dictionary<string, object> MapToDictionary(this object source)
         {
             var dictionary = new Dictionary<string, object>();
-            MapToDictionaryInternal(dictionary, source);
-            foreach (KeyValuePair<string, object> val in dictionary)
-            {
-                InternalLogger.Log($"key {val.Key}  values {val.Value}");
-            }
+            MapToDictionaryInternal(dictionary, source);           
             return dictionary;
         }
 

@@ -670,6 +670,34 @@ namespace EntertainmentFramework.PresetEvent
         }
 
         /// <summary>
+        /// Tracks Forgot Password Request Preset Event.
+        /// </summary>
+        public void TrackForgotPassword(MethodType method, UnityAction callback = null, UnityAction<string> failedCallBack = null)
+        {
+            IPresetAnalyticsEventRequest presetAnalyticsEventRequest = TrackForgotPasswordRequest.Builder()
+                 .Method(method)
+                 .Create(
+                 trackForgotPasswordRequest => MikrosManager.Instance.AnalyticsController.LogEvent(trackForgotPasswordRequest, response =>
+                 {
+                     callback?.Invoke();
+                     InternalLogger.Log("Success response : " + response.Status.StatusCode);
+                 }),
+                 onFailure =>
+                 {
+                     failedCallBack?.Invoke(onFailure.Message);
+                     InternalLogger.LogError("Failue response : " + onFailure.Message);
+                 });
+
+            string primaryJson = JsonConvert.SerializeObject(presetAnalyticsEventRequest);
+            // convert primary JSON into string, object pairs
+            Dictionary<string, object> primaryJsonDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(primaryJson);
+            // merge dictionaries to send as Track Start Timer event
+            Dictionary<string, object> mergedDictionary = GetCompleteAnalyticsParameterDictionary(primaryJsonDictionary);
+            InternalLogger.Log("Final json " + JsonConvert.SerializeObject(mergedDictionary));
+            SendUnityAnaltyicsEvent("forgot_password", mergedDictionary);
+        }
+
+        /// <summary>
         /// Tracks Exception Event.
         /// <see href="https://developer.tatumgames.com/documentation/log-preset-events#track-game-over"> Used to track Gameover.</see>
         /// </summary>

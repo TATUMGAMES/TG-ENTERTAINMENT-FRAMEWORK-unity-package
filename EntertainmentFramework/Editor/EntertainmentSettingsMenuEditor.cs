@@ -62,8 +62,8 @@ namespace EntertainmentEditor
         /// <summary>
         /// Select and focus wrapper Settings asset in inspector.
         /// </summary>
-        [MenuItem(EditorConstants.MenuItemPath, false, 5)]
-        private static void EdiWrapperSettings()
+        [MenuItem(EditorConstants.MenuItemPath, false, 0)]
+        private static void EditWrapperSettings()
         {
             EntertainmentFrameworkSettings wrapperSettingsObject = InitializWrapperSettingsAsset();
             FocusWrapperSettingsAsset(wrapperSettingsObject);
@@ -77,7 +77,7 @@ namespace EntertainmentEditor
         {
             EditorUtility.FocusProjectWindow();
             Selection.activeObject = wrapperSettingsObject;
-        }
+        }        
     }
 }
 #endif
