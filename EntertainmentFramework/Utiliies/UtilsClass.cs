@@ -127,7 +127,7 @@ namespace Entertainment.Utility
             string errorMessage = string.Empty;
             if (ValidateEmail(userInput))
             {
-                return ("", userInput);
+                return ("username", userInput);
             }
             else if (ValidateUsername(userInput, isEnableUsernameSpecialCharacters, out errorMessage))
             {

@@ -20,6 +20,8 @@ namespace EntertainmentFramework.DemoProject
         [SerializeField] private InputField signInUsername;
         [SerializeField] private InputField signInPassword;
 
+        [SerializeField] private InputField forgotPasswordEmailUsername;
+
         [SerializeField] private GameObject signoutButton;
 
         private GameObject currentPanel = null;
@@ -50,6 +52,23 @@ namespace EntertainmentFramework.DemoProject
 #if MIKROS_ADDED
             PopupHandler.Instance.ShowLoader();
             AuthEventHandler.Instance.MikrosSignout(OnAuthSuccess);
+#endif
+        }
+
+        /// <summary>
+        /// Perform Mikros Forgot Password.
+        /// </summary>
+        public void OnClickForgotPassword()
+        {
+#if MIKROS_ADDED
+            PopupHandler.Instance.ShowLoader();
+            AuthEventHandler.Instance.MikrosForgotPassword("",forgotPasswordEmailUsername.text, () =>
+            {
+                OnForgotPasswordCallbackReceived(ConvertForgotPasswordResponse(Constants.EMAIL_SEND_SUCCESSFULL_RESPONSE));
+            }, onFailure =>
+            {
+                OnForgotPasswordCallbackReceived(ConvertForgotPasswordResponse(onFailure));
+            });
 #endif
         }
 
@@ -92,6 +111,46 @@ namespace EntertainmentFramework.DemoProject
             }
             ShowSignOutButton();
 #endif
+        }
+
+        /// <summary>
+        /// Callback for handling success from Mikros Forgot Password.
+        /// </summary>
+        /// <param name="message">Message for showing the status </param>
+        private void OnForgotPasswordCallbackReceived(string message= null)
+        {
+            PopupHandler.Instance.HideLoader();
+            PopupHandler.Instance.ShowPopup(message);
+        }
+
+        /// <summary>
+        /// Convert Forgot Password Response is method that is converting the response 
+        /// message to our own type of message that developer can show to the user.
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public string ConvertForgotPasswordResponse(string message)
+        {
+            string returedMessage;
+            switch (message)
+            {
+                case Constants.EMAIL_SEND_SUCCESSFULL_RESPONSE:
+                    returedMessage = Constants.EMAIL_SEND_SUCCESSFULL_MESSAGE;
+                    break;
+
+                case Constants.WRONG_EMAIL_RESPONSE:
+                    returedMessage = Constants.WRONG_EMAIL_MESSAGE;
+                    break;
+
+                case Constants.LIMIT_EXCEEDED_RESPONSE:
+                    returedMessage = Constants.LIMIT_EXCEEDED_MESSAGE;
+                    break;
+
+                default:
+                    returedMessage = message.Replace("_", " ");
+                    break;
+            }
+            return returedMessage;
         }
     }
 }

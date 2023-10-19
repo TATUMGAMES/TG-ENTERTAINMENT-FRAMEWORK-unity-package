@@ -22,7 +22,7 @@ namespace MikrosEditor
         private const string unityAnalyticsDependencyKey = "com.unity.services.analytics";
 
         private const string packjsonPathLocation = "Packages/packages-lock.json";
-        private const string mikrosDependencyValue = "https://github.com/TATUMGAMES/TG-MIKROS-SDK-unity-package.git#1.3.1-release";
+        private const string mikrosDependencyValue = "https://github.com/TATUMGAMES/TG-MIKROS-SDK-unity-package.git#1.4.0-beta01";
 
         private static ListRequest listRequest;
         private static AddRequest addRequest;

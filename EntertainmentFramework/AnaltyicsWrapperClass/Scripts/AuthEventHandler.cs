@@ -22,7 +22,7 @@ namespace EntertainmentFramework.AuthEvents
                     new AuthEventHandler();
                 }
                 // Return the AuthEventHandler object.
-                return authHandlerInstance; 
+                return authHandlerInstance;
             }
         }
 
@@ -107,6 +107,33 @@ namespace EntertainmentFramework.AuthEvents
                 callback?.Invoke(null);
             },
             failure => onFailure?.Invoke(failure.Message));
+        }
+
+        /// <summary>
+        /// Perform Mikros Forgot Password.
+        /// </summary>
+        /// <param name="username">Username.</param>
+        /// <param name="email">Email.</param>
+        /// <param name="callback">Forgot password success callback.</param>
+        /// <param name="onFailure">Forgot password failure callback.</param>
+        /// <see href="https://docs.unity3d.com/ScriptReference/Events.UnityAction.html">Unity Action Documentation</see>
+        public void MikrosForgotPassword(string username = "", string email = "", UnityAction callback = null, UnityAction<string> onFailure = null)
+        {
+            Debug.Log(username + email);
+            ForgotPasswordRequest.Builder()
+                .Username(username)
+                .Email(email)
+                .Create(forgotPasswordRequest =>
+                {
+                    MikrosManager.Instance.AuthenticationController.ForgotPassword(forgotPasswordRequest, () =>
+                    {
+                        callback?.Invoke();
+                    }, failure =>
+                    {
+                        onFailure?.Invoke(failure.Message);
+                    });
+                },
+               failure => onFailure?.Invoke(failure.Message));
         }
 
         /// <summary>

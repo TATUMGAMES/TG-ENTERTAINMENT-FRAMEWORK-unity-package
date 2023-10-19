@@ -162,9 +162,9 @@ public class AchievementDetails
 
 public class ParticipantData
 {
+#if MIKROS_ADDED
     public string userName;
     public string email;
-#if MIKROS_ADDED
     public PlayerBehavior participantBehavior;
 #endif
 }

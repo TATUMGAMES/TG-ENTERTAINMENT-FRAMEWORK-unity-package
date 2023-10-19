@@ -390,6 +390,25 @@ List<PurchaseInfoData> purchaseDetails = new List<PurchaseInfoData>();
         PresetEventHandler.Instance.TrackPurchaseRequestEvent(skuName, skuDescription, primaryPurchaseCategory, purchaseType,purchaseCurrencyType, purchasePrice, purchaseDetails, percentDiscount, amountRewarded, OnSuccessCallBack, OnFailureCallback);
 
 ```
+##### Track Forgot Password Request Object
+
+| Parameter | Type       | Field    |
+| ----------| ---------- | -------- |
+| method    | MethodType | Required |
+
+
+`Note: MethodType is an enumeration.The values are:`
+```
+MethodType.EMAIL
+MethodType.USERNAME
+MethodType.GOOGLE
+MethodType.FACEBOOK
+MethodType.ANONYMOUS
+```
+```
+ PresetEventHandler.Instance.TrackForgotPassword(method, OnSuccessCallBack, OnFailureCallback);
+```
+
  All the preset Events have a common response :
 ```
 {
