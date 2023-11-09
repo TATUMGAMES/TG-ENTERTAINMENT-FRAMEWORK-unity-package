@@ -32,8 +32,6 @@ namespace EntertainmentFramework
 
         #endregion Mikros/Analytics
 
-
-
         #region Wrapper Settings
 
         internal const string UnityAnalytics = "Enable Unity Analytics";
@@ -44,5 +42,19 @@ namespace EntertainmentFramework
         internal const string Exception= "exception";
 
         #endregion Wrapper Settings
+             
+
+        #region SignIn/SingUp Validation
+        internal const string USERNAME_MINIMUM_CHARACTER_LIMIT = "Username must have a minimum of 6 characters.";
+        internal const string USERNAME_MAXIMUM_CHARACTER_LIMIT = "Username must have a maximum of 30 characters.";
+        internal const string USERNAME_SPACE_VALIDATION = "Username cannot contain spaces.";
+        internal const string USERNAME_SPECIAL_CHARACTER_VALIDATION = "Special characters are not allowed in the username.";
+        internal const string USERNAME_STARTING_CHARACTER_VALIDATION = "Username must start with an alphabetic character.";
+
+        public const string EMAIL_VALIDATION = "Enter this value in the format: email@example.com";
+
+        public const string PASSWORD_SPACE_VALIDATION = "The password you submitted contains spaces.";
+        public const string PASSWORD_MINIMUM_CHARACTER_VALIDATION = "Password must have minimum 6 characters.";
+        #endregion SignIn/SingUp Validation
     }
 }

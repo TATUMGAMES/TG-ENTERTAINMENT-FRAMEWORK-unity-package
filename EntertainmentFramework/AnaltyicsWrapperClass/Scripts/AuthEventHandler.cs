@@ -75,7 +75,7 @@ namespace EntertainmentFramework.AuthEvents
         /// <param name="password">Password.</param>
         /// <param name="callback">Signup success callback.</param>
         /// <see href="https://docs.unity3d.com/ScriptReference/Events.UnityAction.html">Unity Action Documentation</see>
-        public void MikrosSignup(string username, string email, string password, UnityAction<Dictionary<string, object>> callback = null, bool enableSpecialCharacterUsername = true, UnityAction<string> onFailure = null)
+        public void MikrosSignup(string username, string email, string password, bool enableSpecialCharacterUsername = true, UnityAction<Dictionary<string, object>> callback = null, UnityAction<string> onFailure = null)
         {
             SignupRequest.Builder()
                 .Username(username)
@@ -119,7 +119,6 @@ namespace EntertainmentFramework.AuthEvents
         /// <see href="https://docs.unity3d.com/ScriptReference/Events.UnityAction.html">Unity Action Documentation</see>
         public void MikrosForgotPassword(string username = "", string email = "", UnityAction callback = null, UnityAction<string> onFailure = null)
         {
-            Debug.Log(username + email);
             ForgotPasswordRequest.Builder()
                 .Username(username)
                 .Email(email)

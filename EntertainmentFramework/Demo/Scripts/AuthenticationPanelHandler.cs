@@ -40,7 +40,7 @@ namespace EntertainmentFramework.DemoProject
 #if MIKROS_ADDED
             this.currentPanel = currentPanel;
             PopupHandler.Instance.ShowLoader();
-            AuthEventHandler.Instance.MikrosSignup(signUpUsername.text, signUpEmail.text, signUpPassword.text, OnAuthSuccess);
+            AuthEventHandler.Instance.MikrosSignup(signUpUsername.text, signUpEmail.text, signUpPassword.text,true, OnAuthSuccess);
 #endif
         }
 
