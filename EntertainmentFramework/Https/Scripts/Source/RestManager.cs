@@ -4,6 +4,7 @@ using EntertainmentFramework.InternalLoggers;
 using EntertainmentFramework.Utilities;
 using EntertainmentFramework.Utils.Rest;
 using System;
+using System.Diagnostics;
 using RestError = EntertainmentFramework.Utils.RestUtil.RestCallError;
 using RestUtil = EntertainmentFramework.Utils.RestUtil;
 
@@ -60,9 +61,10 @@ namespace EntertainmentFramework
         {
             Instance.restUtil.Send(builder,
                 handler =>
-                {                   
-                    var response = DataConverter.DeserializeObject<ApiResponseFormat<T>>(handler.text);
-                    onCompletion?.Invoke(response.Result);
+                {
+                    UnityEngine.Debug.Log(handler.text);
+                    var response = DataConverter.DeserializeObject<T>(handler.text);
+                    onCompletion?.Invoke(response);
                 },
                 restError => InterceptError(restError, () => onError?.Invoke(restError), onError));
         }

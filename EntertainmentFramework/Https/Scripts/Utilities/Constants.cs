@@ -41,8 +41,7 @@ namespace EntertainmentFramework
         internal const string ExceptionMessage = "detailMessage";
         internal const string Exception= "exception";
 
-        #endregion Wrapper Settings
-             
+        #endregion Wrapper Settings  
 
         #region SignIn/SingUp Validation
         internal const string USERNAME_MINIMUM_CHARACTER_LIMIT = "Username must have a minimum of 6 characters.";
@@ -56,5 +55,13 @@ namespace EntertainmentFramework
         public const string PASSWORD_SPACE_VALIDATION = "The password you submitted contains spaces.";
         public const string PASSWORD_MINIMUM_CHARACTER_VALIDATION = "Password must have minimum 6 characters.";
         #endregion SignIn/SingUp Validation
+
+        #region Sound Data
+
+        public const string SOUND_ON_OFF = "SOUND_ON_OFF";// 0= off 1= on
+        public const string MUSIC_ON_OFF = "MUSIC_ON_OFF";
+        public const string SOUND_VOLUME = "SOUND_VOLUME";
+        public const string MUSIC_VOLUME = "MUSIC_VOLUME";
+        #endregion SOund Data
     }
 }

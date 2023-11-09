@@ -24,7 +24,7 @@ public class DemoAPIManager : MonoBehaviour
             .Verb(Verbs.GET)
             .ContentType(ContentTypes.JSON);
        
-        RestManager.SendWebRequest(builder, onCompletion, onError);
+      //  RestManager.SendWebRequest(builder, onCompletion, onError);
     }
 
     /// <summary>
@@ -42,7 +42,7 @@ public class DemoAPIManager : MonoBehaviour
             .ContentType(ContentTypes.JSON);
            
 
-        RestManager.SendWebRequest(builder, onCompletion, onError);
+      //  RestManager.SendWebRequest(builder, onCompletion, onError);
     }
 
     /// <summary>
@@ -59,7 +59,7 @@ public class DemoAPIManager : MonoBehaviour
              .Verb(Verbs.GET)
              .ContentType(ContentTypes.JSON);
 
-        RestManager.SendWebRequest(builder, onCompletion, onError);
+      //  RestManager.SendWebRequest(builder, onCompletion, onError);
     }
 
     /// <summary>
@@ -76,7 +76,7 @@ public class DemoAPIManager : MonoBehaviour
             .Verb(Verbs.GET)
             .ContentType(ContentTypes.JSON);
 
-        RestManager.SendWebRequest(builder, onCompletion, onError);
+      ///  RestManager.SendWebRequest(builder, onCompletion, onError);
     }
 
     /// <summary>
@@ -93,7 +93,7 @@ public class DemoAPIManager : MonoBehaviour
              .Verb(Verbs.GET)
              .ContentType(ContentTypes.JSON);
 
-        RestManager.SendWebRequest(builder, onCompletion, onError);
+      //  RestManager.SendWebRequest(builder, onCompletion, onError);
     }
 
     /// <summary>
@@ -111,7 +111,7 @@ public class DemoAPIManager : MonoBehaviour
             .Verb(Verbs.GET)
             .ContentType(ContentTypes.JSON);
 
-        RestManager.SendWebRequest(builder, onCompletion, onError);
+    //    RestManager.SendWebRequest(builder, onCompletion, onError);
     }
 
     /// <summary>
@@ -133,8 +133,8 @@ public class DemoAPIManager : MonoBehaviour
             .FormData("Email", email)
             .FormData("Password", password);
         
-
-        RestManager.SendWebRequest(builder, onCompletion, onError);
+//
+      //  RestManager.SendWebRequest(builder, onCompletion, onError);
     }
     /// <summary>
     /// Get Login Details API
@@ -150,8 +150,8 @@ public class DemoAPIManager : MonoBehaviour
             .Verb(Verbs.GET)
             .ContentType(ContentTypes.JSON);
 
-        RestManager.AddClientAuthHeader(ref builder, token);
-        RestManager.SendWebRequest(builder, onCompletion, onError);
+      //  RestManager.AddClientAuthHeader(ref builder, token);
+       // RestManager.SendWebRequest(builder, onCompletion, onError);
     }
 
     public void GetRandomActivity()

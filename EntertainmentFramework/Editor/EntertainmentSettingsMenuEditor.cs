@@ -2,6 +2,7 @@
 
 using UnityEditor;
 using UnityEngine;
+using EntertainmentFramework.AudioHandler;
 
 namespace EntertainmentEditor
 {
@@ -10,8 +11,10 @@ namespace EntertainmentEditor
     /// </summary>
     internal class EntertainmentSettingsMenuEditor
     {
-        private readonly static string wrapperSettingsFileName = EditorConstants.WrapperSettingsFileName;
+        private readonly static string soundDataFileName = EditorConstants.SoundDataSettingFileName;
         private readonly static string extensionName = EditorConstants.WrapperSettingsExtensionName;
+        private readonly static string wrapperSettingsFileName = EditorConstants.WrapperSettingsFileName;
+        private readonly static string buildSettingsFileName = EditorConstants.BuildVersionSettingFileName;
         private readonly static string wrapperSettingsAssetPath = EditorConstants.WrapperSettingsAssetPath;
 
         /// <summary>
@@ -24,12 +27,36 @@ namespace EntertainmentEditor
             EntertainmentFrameworkSettings wrapperSettingsAsset = GetWrapperSettingsAsset();
             if (wrapperSettingsAsset == null)
             {
-                //Debug.LogWarning(EditorConstants.wrapperSettingsWarningMessage);
                 return CreateWrapperSettingsAsset();
             }
             else
             {
                 return wrapperSettingsAsset;
+            }
+        }
+        /// <summary>
+        /// Generate a Build Version Config scriptable object on first import of wrapper package.
+        /// </summary>
+        [InitializeOnLoadMethod]
+        private static void InitializBuildVersionSettingsAsset()
+        {
+            BuildVersionConfig buildConfigObject = Resources.Load<BuildVersionConfig>(buildSettingsFileName);
+            if (buildConfigObject == null)
+            {
+                CreateBuildSettingsAsset();
+            }            
+        }
+
+        /// <summary>
+        /// Generate Sound Data scriptable object on first import of wrapper package.
+        /// </summary>
+        [InitializeOnLoadMethod]
+        private static void InitializeSoundDataSettingsAsset()
+        {
+            SoundData soundDataObject = Resources.Load<SoundData>(soundDataFileName);
+            if (soundDataObject == null)
+            {
+                CreateSoundDataAsset();
             }
         }
 
@@ -55,8 +82,57 @@ namespace EntertainmentEditor
                 AssetDatabase.CreateFolder(splittedPath[0], splittedPath[1]);
             AssetDatabase.CreateAsset(wrapperSettingsAsset, wrapperSettingsAssetPath + "/" + wrapperSettingsFileName + extensionName);
             AssetDatabase.SaveAssets();
-            //FocuswrapperSettingsAsset(wrapperSettingsAsset);
             return wrapperSettingsAsset;
+
+        }
+
+        /// <summary>
+        /// Create a new Sound Data asset file.
+        /// </summary>
+        /// <returns>wrapperSettings instance.</returns>
+        [MenuItem(EditorConstants.SoundDataAssetPath, false, 1)]
+        private static void CreateSoundDataAsset()
+        {
+            SoundData soundDataObject = Resources.Load<SoundData>(soundDataFileName);
+            if (soundDataObject == null)
+            {
+                SoundData soundAssets = ScriptableObject.CreateInstance<SoundData>();
+                string[] splittedPath = wrapperSettingsAssetPath.Split('/');
+                if (!AssetDatabase.IsValidFolder(wrapperSettingsAssetPath))
+                    AssetDatabase.CreateFolder(splittedPath[0], splittedPath[1]);
+                AssetDatabase.CreateAsset(soundAssets, wrapperSettingsAssetPath + "/" + soundDataFileName + extensionName);
+                AssetDatabase.SaveAssets();
+                FocusWrapperSettingsAsset(soundAssets);
+            }
+            else
+            {
+                FocusWrapperSettingsAsset(soundDataObject);
+
+            }
+
+        }
+
+        /// <summary>
+        /// Select and focus build Settings asset in inspector.
+        /// </summary>
+        [MenuItem(EditorConstants.BuildAssetPath, false, 0)]
+        private static void CreateBuildSettingsAsset()
+        {
+            BuildVersionConfig buildConfigObject = Resources.Load<BuildVersionConfig>(buildSettingsFileName);
+            if (buildConfigObject == null)
+            {
+                BuildVersionConfig buildAsset = ScriptableObject.CreateInstance<BuildVersionConfig>();
+                string[] splittedPath = wrapperSettingsAssetPath.Split('/');
+                if (!AssetDatabase.IsValidFolder(wrapperSettingsAssetPath))
+                    AssetDatabase.CreateFolder(splittedPath[0], splittedPath[1]);
+                AssetDatabase.CreateAsset(buildAsset, wrapperSettingsAssetPath + "/" + buildSettingsFileName + extensionName);
+                AssetDatabase.SaveAssets();
+                FocusWrapperSettingsAsset(buildAsset);
+            }
+            else
+            {
+                FocusWrapperSettingsAsset(buildConfigObject);
+            }
         }
 
         /// <summary>
@@ -77,7 +153,7 @@ namespace EntertainmentEditor
         {
             EditorUtility.FocusProjectWindow();
             Selection.activeObject = wrapperSettingsObject;
-        }        
+        }
     }
 }
 #endif

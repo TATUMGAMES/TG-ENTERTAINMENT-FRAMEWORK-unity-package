@@ -8,4 +8,6 @@ public static class Urls
     public const string ACTIVITY_BY_PRICE_RANGE = "activity?minprice={0}&maxprice={1}";
     public const string REGISTRATION = "user/registration";
     public const string PROFILE_DETAILS = "user/get-profile?user_id=25";
+
+    public const string CONFIG = "mikros/mobile/config";
 }
