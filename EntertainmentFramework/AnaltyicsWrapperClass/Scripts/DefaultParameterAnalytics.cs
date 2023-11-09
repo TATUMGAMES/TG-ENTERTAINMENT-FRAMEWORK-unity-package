@@ -18,7 +18,7 @@ internal sealed class DefaultParameterAnalytics
     public string appVersion = Application.version;
 
     [JsonProperty(PropertyName = "sdkVersion")]
-    public string sdkVersion = "1.3.1";// Constants.SDKVersion; //TODO need to check and load data from MIKROS Package.
+    public string sdkVersion =  "1.4.0";// Constants.SDKVersion; //TODO need to check and load data from MIKROS Package.
 
     [JsonProperty(PropertyName = "Timestamp")]
     public string timestamp = UtilsClass.CurrentLocalTime();

@@ -9,11 +9,16 @@ namespace EntertainmentEditor
         #region MikrosSettingsMenu
 
         internal const string WrapperSettingsFileName = "Entertainment Settings";
+        internal const string BuildVersionSettingFileName = "Build Version";
+        internal const string SoundDataSettingFileName = "Sound Data";
         internal const string WrapperSettingsExtensionName = ".asset";
         internal const string UnityAnaltyicsSetupHeader = "Analytics Setup";
         internal const string WrapperSettingsAssetPath = "Assets/Resources";
         internal const string Entertainement = "Entertainment Framework";
         internal const string MenuItemPath = "Entertainment/Edit Settings";
+        internal const string BuildAssetPath = "Entertainment/Build Config";
+        internal const string SoundDataAssetPath = "Entertainment/Sound Data";
+        internal const string ImportGooglePackage = "Entertainment/Package/Google";
         internal const string AddMikrosPackage = "Entertainment/Add Project/Mikros Package";
         internal const string AddUnityAnalyticsPackage = "Entertainment/Add Project/Unity Analytics Package";
 

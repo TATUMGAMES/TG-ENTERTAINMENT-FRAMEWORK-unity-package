@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Config
   m_EditorClassIdentifier: 
   Api:
-    Host: https://www.boredapi.com/api/
+    Host: https://tg-api-new-stage.uc.r.appspot.com/

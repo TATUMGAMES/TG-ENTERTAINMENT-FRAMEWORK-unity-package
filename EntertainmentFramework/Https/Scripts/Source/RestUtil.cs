@@ -120,23 +120,23 @@ namespace EntertainmentFramework.Utils
                         Headers = _currentCall.Request.GetResponseHeaders(),
                     };
                     var oauthResponse =
-                        DataConverter.DeserializeObject<ApiResponseFormat<OauthErrorResponse>>(restCallError.Raw);
+                        DataConverter.DeserializeObject<ConfigDataResponseFormat>(restCallError.Raw);
                     if (oauthResponse == null)
                     {
                         restCallError.Error = Constants.NO_CONNECTION_ERROR;
                         restCallError.Description = Constants.NO_CONNECTION_ERROR;
                     }
-                    else if (oauthResponse.Result != null)
+                    else if (oauthResponse.data != null)
                     {
-                        restCallError.Error = oauthResponse.Result.Error;
-                        restCallError.Description = oauthResponse.Result.ErrorDescription;
+                        restCallError.Error = oauthResponse.status.statusCode.ToString();
+                        restCallError.Description = oauthResponse.status.statusMessage;
                     }
                     else
                     {
                         var deSerializedData =
-                            DataConverter.DeserializeObject<ApiResponseFormat<string>>(restCallError.Raw);
-                        restCallError.Error = deSerializedData.Status.ToString();
-                        restCallError.Description = deSerializedData.Message;
+                            DataConverter.DeserializeObject<ConfigDataResponseFormat>(restCallError.Raw);
+                        restCallError.Error = deSerializedData.status.statusCode.ToString();
+                        restCallError.Description = deSerializedData.status.statusMessage;
                     }
 
                     _currentCall.OnError(restCallError);
