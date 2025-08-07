@@ -1,0 +1,27 @@
+{
+  "name": "com.tatumgames.entertainment.framework",
+  "version": "1.0.0",
+  "displayName": "EntertainmentFramework",
+  "unity": "2020.1",
+  "documentationUrl": "",
+  "changelogUrl": "",
+  "licensesUrl": "",
+  "keywords": [
+    "mikros",
+    "tatum games",
+    "tg"
+  ],
+  "author": {
+    "name": "Tatum Games",
+    "email": "leonard.tatum@tatumgames.com",
+    "url": "https://developer.tatumgames.com/"
+  },
+  "description": "Common framework that includes networking, utilities, and other 3rd party services encapsulated in a singular module.",
+  "type": "library",
+  "unityRelease": "1f1",
+  "dependencies": {
+    "com.unity.services.analytics": "5.0.0",
+    "com.unity.nuget.newtonsoft-json": "3.2.1"
+  },
+  "hideInEditor": false
+}
